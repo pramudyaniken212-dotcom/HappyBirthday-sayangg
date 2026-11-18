@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Selamat Ulang Tahun ♥</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+
+<!-- GANTI NAMA FILE LAGU DI SINI -->
+<audio id="bg-music" src="assets/Backstreet Boys - Shape Of My Heart (Official HD Video).mp3" loop preload="auto"></audio>
+<button id="music" aria-label="Putar atau jeda musik">♪</button>
+<canvas id="confetti"></canvas>
+<div id="floaters"></div>
+
+<!-- SLIDE 1 -->
+<section class="slide active" id="s1">
+  <div id="loader"><div class="h">♥</div><div class="script">Menyiapkan kejutan untukmu…</div></div>
+  <canvas id="heartCanvas" width="360" height="330"></canvas>
+  <h1 id="t1"></h1>
+  <div class="script" id="t1b"></div>
+  <p id="t1c"></p>
+  <button class="btn" id="start" disabled>Buka Kejutan ♥</button>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide" id="s2">
+  <h2>Satu gembok, satu rahasia</h2>
+  <div class="lock" id="lock"><div class="shackle"></div><div class="body"></div></div>
+  <input id="pin" autocomplete="off" placeholder="••••" aria-label="PIN gembok">
+  <button class="btn" id="unlock">Buka Gembok</button>
+  <div id="msg"></div>
+  <div id="hint"></div>
+  <button class="btn hidden" id="next2">Lanjut ♥</button>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide" id="s3">
+  <h2>Make a wish…</h2>
+  <p class="soft">Tiup lilinnya: ketuk apinya atau pakai mikrofon.</p>
+  <div class="cake">
+    <div class="candles" id="candles"></div><div class="drip"></div>
+    <div class="layer l3"></div><div class="layer l2"></div><div class="layer l1"></div>
+  </div>
+  <button class="btn gold" id="mic">🎤 Tiup lewat mikrofon</button>
+  <button class="btn hidden" id="next3">Lihat pacar aku ♥</button>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide" id="s4">
+  <h2>Galeri Pacar Aku</h2>
+  <p class="soft">Ketuk foto untuk membukanya.</p>
+  <div class="grid" id="grid"></div>
+  <button class="btn" id="next4">Ada sedikit games wkwk ♥</button>
+  <button class="back-btn" onclick="go(currentSlide - 1)">← Back</button>
+</section>
+
+<!-- SLIDE 5: MINI GAMES -->
+<section class="slide" id="s5">
+  <h2>Let's Play Together ♥</h2>
+  <p class="soft">Selesaikan permainan kecil ini untuk membuka kejutan berikutnya.</p>
+
+  <div class="game-card">
+    <div id="gameProgress">Game 1</div>
+    <h2 id="gameQuestion">Pertanyaan untukmu ♥</h2>
+    <div id="gameOptions"></div>
+    <p id="gameFeedback"></p>
+    <div id="surpriseArea"></div>
+  </div>
+
+  <button class="btn hidden" id="next5">
+    Lanjut ke Bucket List ♥
+  </button>
+  <button class="back-btn" onclick="go(currentSlide - 1)">← Back</button>
+</section>
+
+<!-- SLIDE 6: BUCKET LIST -->
+<section class="slide" id="s6">
+  <h2>Our Little Bucket List ♥</h2>
+  <p class="soft">Banyak hal indah yang masih ingin kita lakukan bersama.</p>
+
+  <div class="bucket-card">
+    <div id="bucketProgress">0 impian tercapai</div>
+    <div id="bucketItems"></div>
+  </div>
+
+  <p class="soft">Satu per satu kita wujudkan bersama, ya ♥</p>
+
+  <button class="btn" id="next6">
+    Buka Surat♥
+  </button>
+  <button class="back-btn" onclick="go(currentSlide - 1)">← Back</button>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide" id="s7">
+  <div class="letter">
+    <h2 id="lt"></h2>
+    <div id="lbody"></div>
+    <div class="sig" id="lsig"></div>
+  </div>
+  <!-- PENUTUP: foto pacar + kata-kata + hati Python -->
+  <div class="final hidden" id="final">
+    <canvas id="finalCanvas" width="360" height="330"></canvas>
+   <div class="final-photos">
+    <img id="finalPhoto" alt="Foto pasangan">
+    <img id="myFinalPhoto" src="assets/poto gw.jpeg" alt="Foto kamu">
+  </div>
+    <h2 id="finalTitle"></h2>
+    <p class="script" id="finalText"></p>
+  </div>
+  <button class="back-btn" onclick="go(currentSlide - 1)">← Back</button>
+</section>
+
+<div id="modal"><button id="mclose" aria-label="Tutup">×</button>
+  <div class="card"><img id="mimg" alt=""><p id="mcap"></p></div></div>
+
+<script src="script.js"></script>
+<!-- Logika Python (PyScript) -->
+<script type="py" src="./main.py"></script>
+</body>
+</html>
